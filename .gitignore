@@ -419,4 +419,4 @@ fabric.properties
 secret.py
 
 # db
-# **/db/
+**/db/

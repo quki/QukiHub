@@ -6,11 +6,11 @@
             <div class="col-md-7 col-sm-12 col-md-offset-5 main-content">
 
                 <div class="author-bio">
-
-                    <img src="img/author.jpg">
+                    {% load static from staticfiles %}
+                    <img src="{% static 'test/512.png' %}">
 
                     <div class="author-bio__info">
-                        <h1>Michelle Jones</h1>
+                        <h1>Welcome to QukiHub</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis necessitatibus repellat
                             et
                             similique, assumenda dolor possimus sunt repellendus ratione quas nihil expedita maiores, ex
@@ -85,11 +85,7 @@
                     </div>
                 </div>
 
-                <footer class="split-footer">
-                    <a href="page.html">About</a>
-                    <i class="link-spacer"></i>
-                    <a href="page.html">Writer 2015</a>
-                </footer>
+                {% include 'app/footer.html' %}
             </div><!-- main content -->
         </div>
     </main>

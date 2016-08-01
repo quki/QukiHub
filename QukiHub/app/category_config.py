@@ -18,5 +18,5 @@ CATEGORY_NAME_PAIR = {
 }
 POST_CATEGORIES = {
     IT_FOR_COMPUTER: ['Android', 'Arduino', 'Django'],
-    ETC_FOR_COMPUTER: ['무적'],
+    ETC_FOR_COMPUTER: ['Reading'],
 }
