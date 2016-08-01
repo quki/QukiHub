@@ -1,0 +1,58 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    <main class="container left-container">
+        <div class="row">
+            <section id="loginForm">
+                <div class="col-md-7 col-sm-12 col-md-offset-5 main-content">
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        <h3>Sign in</h3>
+                        <div class="form-group">
+                            <label for="id_username" class="col-md-3 control-label">User name</label>
+                            <div class="col-md-10">
+                                {{ form.username }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_password" class="col-md-3 control-label">Password</label>
+                            <div class="col-md-10">
+                                {{ form.password }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="hidden" name="next" value="/"/>
+                                <input type="submit" value="Sign in" class="btn btn-default"/>
+                                {% if form.errors %}
+                                    <br><h5 class="validation-summary-errors">Please check user name and password.</h5>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% comment %}<div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+
+                        </div>
+                    </div>{% endcomment %}
+
+
+                    </form>
+                </div>
+
+            </section>
+            <div class="col-md-4">
+                <section id="socialLoginForm"></section>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load staticfiles %}
+    <script src="{% static 'app/js/vendor/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

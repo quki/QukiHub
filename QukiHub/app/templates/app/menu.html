@@ -1,0 +1,53 @@
+{% load dictionary_tags %}
+
+<div id="menu-target">
+    <ul>
+        <li><i></i><a href="{% url 'home' %}">Home</a></li>
+        <li><i></i><a href="{% url 'about' %}">About</a></li>
+        <li><i></i><a href="{% url 'contact' %}">Contact</a></li>
+        <li><i></i><a href="author.html">John Smith</a></li>
+        <li><i></i><a href="favorites.html">Favorites</a></li>
+    </ul>
+    <hr>
+    <ul>
+        {% comment %}{% for e1, e2 in view.config %}
+            <li class="submenu"></i><i></i><a>{{ e2 }}</a><b class="caret"></b>
+                <ul class="submenu-list">
+                    {% for object in view.config_obj %}
+                        {% if  object.main == e1 %}
+                            <li>
+                                <a href="{% url 'post' main=object.main sub=object.sub%}">{{ object.sub }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}{% endcomment %}
+
+        {% for mainparam, sublist in view.config.items %}
+            <li class="submenu"></i><i></i><a>{{ view.choice_name  | get_item:mainparam}}</a><b class="caret"></b>
+                <ul class="submenu-list">
+                    {% for subparam in  sublist %}
+                        <li>
+                            <a href="{% url 'post' main=mainparam sub=subparam%}">{{ subparam }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+
+        <li><i></i><a href="post-sidebar.html">Post with Sidebar</a></li>
+        {% comment %}<li><i class="fa fa-home"></i><a href="{% url 'alt-home' %}">Alternate Home</a></li>{% endcomment %}
+        <li><i></i><a href="category.html">Category Page</a></li>
+        {% if user.is_authenticated and user.username == "quki" %}
+            <li><i></i><a href="{% url 'onlyadmin' %}">Admin</a></li>
+        {% endif %}
+        {% include 'app/loginpartial.html' %}
+    </ul>
+</div>
+
+<span class="menu-trigger animated fadeInDown">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+</span>
