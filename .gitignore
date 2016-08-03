@@ -420,3 +420,4 @@ secret.py
 
 # db
 **/db/
+db.sqlite3
