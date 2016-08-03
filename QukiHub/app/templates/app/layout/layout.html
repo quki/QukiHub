@@ -4,20 +4,20 @@
 {% include 'app/head.html' %}
 
 <body>
-{% include 'app/menu.html' %}
+{% include 'app/layout/menu.html' %}
 {% load static from staticfiles %}
 {% if view.layout_index == 0 or layout_index == 'auth' %}
 
-    {% include 'app/sidebar.html' %}
+    {% include 'app/layout/sidebar.html' %}
     {% block content %} {% endblock %}
 
 {% elif view.layout_index == 1 %}
 
-    {% include 'app/topbar.html' %}
+    {% include 'app/layout/topbar.html' %}
     {% block item %} {% endblock %}
 
 {% endif %}
-{% include 'app/tail.html' %}
+{% include 'app/layout/tail.html' %}
 </body>
 </html>
 

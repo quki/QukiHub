@@ -34,10 +34,10 @@ class BlogIndex(generic.ListView):
         return obj
 
 
-class PostsList(generic.ListView):
+class Home(generic.ListView):
     queryset = Post.objects.published()  # ?????
     template_name = 'app/index.html'
-    # paginate_by = 2
+    paginate_by = 5
     view_name = 'home'
     config = category_config.POST_CATEGORIES
     choice = category_config.POST_MAIN_CHOICES
@@ -68,6 +68,26 @@ class About(generic.TemplateView):
     template_name = 'app/about.html'
     layout_index = 0
     view_name = 'about'
+    config = category_config.POST_CATEGORIES
+    choice = category_config.POST_MAIN_CHOICES
+    choice_name = category_config.CATEGORY_NAME_PAIR
+
+
+class ActivityList(generic.ListView):
+    queryset = Post.objects.published()  # ?????
+    template_name = 'app/index.html'
+    # paginate_by = 2
+    view_name = 'home'
+    config = category_config.POST_CATEGORIES
+    choice = category_config.POST_MAIN_CHOICES
+    choice_name = category_config.CATEGORY_NAME_PAIR
+    layout_index = 0  # layout_index = [picture-left-layout, picture-top-layout]
+
+
+class Portfolio(generic.TemplateView):
+    template_name = 'app/portfolio_item.html'
+    layout_index = 1
+    view_name = 'portfolio'
     config = category_config.POST_CATEGORIES
     choice = category_config.POST_MAIN_CHOICES
     choice_name = category_config.CATEGORY_NAME_PAIR

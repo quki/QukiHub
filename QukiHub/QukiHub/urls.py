@@ -18,9 +18,11 @@ urlpatterns = [  # 서버에 요청이 오면 누가 어떻게 처리할지 담�
 
     # url(주소, 접속시 누가 처리할 것인지)
     url(r'^admin/', admin.site.urls),
-    url(r'^$', app.views.PostsList.as_view(), name='home'),
+    url(r'^$', app.views.Home.as_view(), name='home'),
     url(r'^contact$', app.views.Contact.as_view(), name='contact'),
     url(r'^about', app.views.About.as_view(), name='about'),
+    url(r'^portfolio', app.views.Portfolio.as_view(), name='portfolio'),
+    url(r'^activity', app.views.ActivityList.as_view(), name='activity'),
     url(r'^post/(?P<main>\S+)/(?P<sub>\S+)$', app.views.BlogIndex.as_view(), name='post'),
     url(r'^post/(?P<slug>\S+)$', app.views.PostItem.as_view(), name="entry_detail"),
     url(r'^login/$',

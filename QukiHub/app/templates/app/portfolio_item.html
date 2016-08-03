@@ -1,17 +1,15 @@
-{% extends "app/layout/layout.html" %}
+{% extends 'app/layout/layout.html' %}
 {% load static from staticfiles %}
 {% block item %}
+
     <main class="container">
         <div class="row">
-            <div class="col-xs-12 single-content">
-                <p class="meta">
-                    <a class="" href="category.html">Quki</a> in <a class="" href="category.html">Storytime</a> <i
-                        class="link-spacer"></i> <i class="fa fa-bookmark"></i> {{ object.created }}
-                </p>
+            <div class="col-xs-12 col-md-8 single-content-sidebar">
 
-                <h1>{{ object.title }}</h1>
 
-                <p class="subtitle">{{ object.overview }}</p>
+                <h1>A Great Story Never Told</h1>
+
+                <p class="subtitle">Like I said, never told...</p>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra ligula eget feugiat
                     sollicitudin.
@@ -30,7 +28,7 @@
 
                 <p class="pullquote">Ut ullamcorper turpis nec felis vestibulum, vitae pretium mi sodales.</p>
 
-                <p>{{ object.content | safe }}</p>
+
                 <p>Suspendisse laoreet consequat pellentesque. Aliquam erat volutpat. Nulla est elit, bibendum sit amet
                     mauris eu, varius sollicitudin nibh. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Temporibus veniam laborum sapiente, doloribus placeat culpa aliquam asperiores laudantium nobis
@@ -84,8 +82,66 @@
 
 
             </div><!-- main-content/col -->
-        </div>
-    </main>
+            <div class="col-xs-12 col-md-3 col-md-offset-1 single-content-sidebar-area">
+
+                <img src="{% static 'app/img/profile-1.jpg' %}" class="user-icon " alt="user-image">
+                <div class="meta">
+
+                    <div class="sidebar-info">
+                        <a href="category.html">James Reddy</a> in <a href="category.html">Storytime</a>
+                    </div>
+
+                    <div class="sidebar-readtime">
+                        <i class="fa fa-bookmark"></i> 23 minute read
+                    </div>
+
+                </div>
+
+                <h2 class="favorites">Similar Categories</h2>
+
+                <a href="category.html">
+                    <div class="similar-cat">
+                        <img src="{% static 'app/img/similar-cat-1.jpg' %}">
+                        <h3>Storytime</h3>
+                    </div>
+                </a>
+
+                <a href="category.html">
+                    <div class="similar-cat">
+                        <img src="{% static 'app/img/similar-cat-2.jpg' %}">
+                        <h3>Nature</h3>
+                    </div>
+                </a>
+
+                <a href="category.html">
+                    <div class="similar-cat">
+                        <img src="{% static 'app/img/similar-cat-3.jpg' %}">
+                        <h3>Travel</h3>
+                    </div>
+                </a>
+
+                <h2 class="favorites">Similar Posts</h2>
+
+                <div class="similar-post">
+                    <a href="post.html"><h3>Leave the City for a Life on the Road</h3></a>
+                </div>
+
+                <div class="similar-post">
+                    <a href="post.html"><h3>The Best Story Never Told</h3></a>
+                </div>
+
+                <div class="similar-post">
+                    <a href="post.html"><h3>Stop Thinking and Start Doing</h3></a>
+                </div>
+
+                <div class="similar-post">
+                    <a href="post.html"><h3>You Don't Have To Be Great To Get Started</h3></a>
+                </div>
+
+            </div>
+        </div> <!--/row -->
+
+    </main> <!-- /container -->
 
     {% include 'app/layout/footer.html' %}
 {% endblock %}

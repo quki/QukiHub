@@ -1,4 +1,4 @@
-{% extends 'app/layout.html' %}
+{% extends 'app/layout/layout.html' %}
 {% block content %}
     {% load static from staticfiles %}
     <main class="container left-container">
@@ -30,74 +30,16 @@
                             </div>
                         </article>
                     {% endfor %}
-
-
-                    <article class="post">
-                        <div class="post-preview col-xs-10 no-gutter">
-                            <h2><a href="post.html">Builing, Hacking, Creating</a></h2>
-                            <p>Is it better to start from scratch or build on someone elses work. My thoughts.</p>
-
-                            <p class="meta">
-                                <a href="author.html">Mad Hacker</a> in <a href="category.html">Easy Living</a> <i
-                                    class="link-spacer"></i> <i class="fa fa-bookmark"></i> 9 minute read
-                            </p>
-                        </div>
-
-                        <div class=" col-xs-2 no-gutter">
-                            <img src="{% static 'app/img/profile-1.jpg' %}" class="user-icon" alt="user-image">
-                        </div>
-                    </article>
-                    <article class="post">
-                        <div class="post-preview col-xs-10 no-gutter">
-                            <h2><a href="post.html">Ten reasons why you should travel, or why the city is killing your
-                                inner
-                                creative</a></h2>
-                            <p>About time for your next adventure. </p>
-
-                            <p class="meta">
-                                <a href="author.html">Sarah Smith</a> in <a href="category.html">Adventure</a> <i
-                                    class="link-spacer"></i> <i class="fa fa-bookmark"></i> 5 minute read
-                            </p>
-                        </div>
-
-                        <div class="col-xs-2 no-gutter">
-                            <img src="{% static 'app/img/profile-2.jpg' %}" class="user-icon" alt="user-image">
-                        </div>
-                    </article>
-
-                    <article class="post">
-                        <div class="post-preview col-xs-10 no-gutter">
-                            <h2><a href="post.html">Feature List</a></h2>
-                            <p>Wondering what is actually included? </p>
-
-                            <p class="meta">
-                                <a href="author.html">Jane Thompson</a> in <a href="category.html">Writer</a> <i
-                                    class="link-spacer"></i> <i class="fa fa-bookmark"></i> 2 minute read
-                            </p>
-                        </div>
-
-                        <div class=" col-xs-2 no-gutter">
-                            <img src="{% static 'app/img/profile-3.jpg' %}" class="user-icon" alt="user-image">
-                        </div>
-                    </article>
-
-                    <article class="post">
-                        <div class="post-preview col-xs-10 no-gutter">
-                            <h2><a href="post.html">About Writer</a></h2>
-                            <p>Not another bootstrap theme </p>
-
-                            <p class="meta">
-                                <a href="author.html">John Smith</a> in <a href="category.html">Writer</a> <i
-                                    class="link-spacer"></i> <i class="fa fa-bookmark"></i> 3 minute read
-                            </p>
-                        </div>
-
-                        <div class=" col-xs-2 no-gutter">
-                            <img src="{% static 'app/img/profile-3.jpg' %}" class="user-icon" alt="user-image">
-                        </div>
-                    </article>
-
-
+                    {% if is_paginated %}
+                        <ul class="pager">
+                            <li {% if not page_obj.has_previous %}class="disabled"{% endif %}><a
+                                    {% if page_obj.has_previous %}href="?page={{ page_obj.previous_page_number }}"{% endif %}>Prev</a>
+                            </li>
+                            <li {% if not page_obj.has_next %}class="disabled"{% endif %}><a
+                                    {% if page_obj.has_next %}href="?page={{ page_obj.next_page_number }}"{% endif %}>Next</a>
+                            </li>
+                        </ul>
+                    {% endif %}
                 </div><!-- Home page posts -->
 
                 <div class="home-page-categories hide animated fadeIn ">
@@ -105,68 +47,80 @@
                         <section>
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Android</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-2.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-2.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Aruduino</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-4.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-4.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Python</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-6.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-6.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Algorithm</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-9.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-9.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Database</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-1.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-1.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Operating System</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-3.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-3.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Machine Learning</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-5.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-5.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Open Source</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-7.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-7.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Hackathon</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-8.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-8.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>AWS</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-10.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-10.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>English</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-11.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-11.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                             <div class="category-preview col-xs-6 col-sm-4 ">
                                 <h2>Reading</h2>
-                                <a href="category.html"><img src="{% static 'app/img/cover-12.jpg' %}" alt="category-image"></a>
+                                <a href="category.html"><img src="{% static 'app/img/cover-12.jpg' %}"
+                                                             alt="category-image"></a>
                             </div>
 
                         </section>
                     </div>
                 </div>
-                {% include 'app/footer.html' %}
+                {% include 'app/layout/footer_simple.html' %}
 
             </section><!-- main content -->
         </div>
