@@ -171,8 +171,9 @@ if DEBUG:
 else:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+    # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    AWS_S3_CUSTOM_DOMAIN = 'd2ylz7oz0qe74q.cloudfront.net'
+    STATIC_URL = "http://%s/" % AWS_S3_CUSTOM_DOMAIN
 
 '''
 1. STATICFILES_DIRS
