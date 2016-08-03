@@ -10,7 +10,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = SECRET_KEY
 DEBUG = False
 ALLOWED_HOSTS = ['*']
@@ -25,53 +24,11 @@ INSTALLED_APPS = ['app',
                   'django.contrib.staticfiles',
                   'ckeditor',
                   'storages',
-                  'pipeline',
                   ]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
 )
-PIPELINE = {
-    'STYLESHEETS': {
-        'vendor': {
-            'source_filenames': (
-                'app/content/bootstrap.min.css',
-                'app/content/site.css',
-            ),
-            'output_filename': 'css/vendor.css',
-        },
-        'style': {
-            'source_filenames': (
-                'my/my.css',
-            ),
-            'output_filename': 'css/my/style.css',
-        },
-    },
-    'JAVASCRIPT': {
-        'vendor_pre': {
-            'source_filenames': (
-                'app/scripts/*.js',
-                'app/scripts/modernizr-2.6.2.js'
-            ),
-            'output_filename': 'js/vendor/vendor.js',
-        },
-        'vendor_post': {
-            'source_filenames': (
-                'app/scripts/jquery-1.10.2.js',
-                'app/scripts/bootstrap.js',
-                'app/scripts/respond.js',
-            ),
-            'output_filename': 'js/vendor/vendor_post.js',
-        },
-        'fastagram': {
-            'source_filenames': (
-                'js/*.js',
-            ),
-            'output_filename': 'js/fastagram.js',
-        }
-    }
-}
 MIDDLEWARE_CLASSES = ['django.middleware.security.SecurityMiddleware',
                       'django.contrib.sessions.middleware.SessionMiddleware',
                       'django.middleware.common.CommonMiddleware',
@@ -123,10 +80,8 @@ AUTH_PASSWORD_VALIDATORS = [{
     }, ]
 
 LANGUAGE_CODE = 'ko-KR'
-# LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Seoul'
-# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -135,7 +90,6 @@ USE_L10N = True
 USE_TZ = True
 
 # ckeditor
-
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
@@ -210,7 +164,6 @@ AWS_S3_SECURE_URLS = False
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_HOST = 's3.ap-northeast-2.amazonaws.com'  # for seoul region
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'app/static_local'),)
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 if DEBUG:
     STATIC_URL = '/static_local/'

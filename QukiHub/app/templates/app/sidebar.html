@@ -1,20 +1,13 @@
 {% load static from staticfiles %}
 <section class="sidebar col-md-5 col-sm-12"
-         style="background-image: url({% static 'app/img/default-sidebar.jpg' %})">
+         style="background-image: url({% static 'app/img/skateboard_test.jpg' %})">
 
     <div class="site-info">
         {% if view.view_name  == "home" %}
             <div class="primary-info">
                 <h1>QukiHub</h1>
                 <p>Welcome to QukiHub, Enjoy many IT posts, Portfolios and Activities</p>
-
                 <p>© 2016 All Rights Reserved. Quki</p>
-            </div>
-            <div class="secondary-info">
-                <p>
-                    <a class="btn btn-primary" href="#"><i class="fa fa-user-plus"></i>Join Our
-                        Newsletter</a>
-                </p>
             </div>
         {% elif view.view_name  == "about" %}
             <div class="primary-info">
