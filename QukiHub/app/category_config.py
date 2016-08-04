@@ -1,22 +1,16 @@
-IT_FOR_COMPUTER = 'IT'
-IT_FOR_HUMAN = 'IT / SW'
-ENGLISH_FOR_COMPUTER = 'ENG'
-ENGLISH_FOR_HUMAN = 'English'
-ETC_FOR_COMPUTER = 'ETC'
-ETC_FOR_HUMAN = 'Etc'
-
-POST_MAIN_CHOICES = [
-    (IT_FOR_COMPUTER, IT_FOR_HUMAN),
-    (ENGLISH_FOR_COMPUTER, ENGLISH_FOR_HUMAN),
-    (ETC_FOR_COMPUTER, ETC_FOR_HUMAN),
+# 하위 항목 카테고리
+POST_CHILD_CHOICES = [
+    ('aws', 'AWS'),
+    ('robotics', 'Robotics'),
+    ('db', 'Database'),
+    ('python', 'Python'),
+    ('algorithm', 'Algorithm'),
+    ('etc', 'Etc'),
 ]
 
-CATEGORY_NAME_PAIR = {
-    IT_FOR_COMPUTER: IT_FOR_HUMAN,
-    ENGLISH_FOR_COMPUTER: ENGLISH_FOR_HUMAN,
-    ETC_FOR_COMPUTER: ETC_FOR_HUMAN
-}
-POST_CATEGORIES = {
-    IT_FOR_COMPUTER: ['Android', 'Arduino', 'Django'],
-    ETC_FOR_COMPUTER: ['Reading'],
-}
+# 상위 항목 카테고리
+POST_PARENT_CHOICES = [
+    ('it', 'IT / SW'),
+    ('reading', 'Reading'),
+    ('etc', 'Etc'),
+]

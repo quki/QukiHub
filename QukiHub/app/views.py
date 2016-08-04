@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
-from .models import Post, Category
+from .models import Post, CategoryPost
 # from django.contrib.auth.decorators import permission_required
 # from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import user_passes_test
@@ -19,78 +19,56 @@ from django.utils import timezone
 ...
 
 
-class BlogIndex(generic.ListView):
-    template_name = 'app/post.html'
-    layout_index = 0
-    view_name = 'home'
-    config = category_config.POST_CATEGORIES
-    choice = category_config.POST_MAIN_CHOICES
-    choice_name = category_config.CATEGORY_NAME_PAIR
-
-    def get_queryset(self):
-        self.category = get_object_or_404(Category, main=self.kwargs['main'], sub=self.kwargs['sub'])
-        obj = Post.objects.published().filter(category=self.category)
-        print(obj)
-        return obj
-
-
 class Home(generic.ListView):
     queryset = Post.objects.published()  # ?????
     template_name = 'app/index.html'
+    layout_style = 'left'  # layout_style = {left: picture-left-layout, top: picture-top-layout}
     paginate_by = 5
     view_name = 'home'
-    config = category_config.POST_CATEGORIES
-    choice = category_config.POST_MAIN_CHOICES
-    choice_name = category_config.CATEGORY_NAME_PAIR
-    layout_index = 0  # layout_index = [picture-left-layout, picture-top-layout]
+
+
+class Contact(generic.TemplateView):
+    template_name = 'app/contact.html'
+    layout_style = 'left'
+    view_name = 'contact'
+
+
+class About(generic.TemplateView):
+    template_name = 'app/about.html'
+    layout_style = 'left'
+    view_name = 'about'
 
 
 class PostItem(generic.DetailView):
     model = models.Post
     template_name = 'app/post_item.html'
-    layout_index = 1
-    view_name = 'post-item'
-    config = category_config.POST_CATEGORIES
-    choice = category_config.POST_MAIN_CHOICES
-    choice_name = category_config.CATEGORY_NAME_PAIR
-
-
-class Contact(generic.TemplateView):
-    template_name = 'app/contact.html'
-    layout_index = 0
-    view_name = 'contact'
-    config = category_config.POST_CATEGORIES
-    choice = category_config.POST_MAIN_CHOICES
-    choice_name = category_config.CATEGORY_NAME_PAIR
-
-
-class About(generic.TemplateView):
-    template_name = 'app/about.html'
-    layout_index = 0
-    view_name = 'about'
-    config = category_config.POST_CATEGORIES
-    choice = category_config.POST_MAIN_CHOICES
-    choice_name = category_config.CATEGORY_NAME_PAIR
+    layout_style = 'top'
+    view_name = 'post_item'
 
 
 class ActivityList(generic.ListView):
     queryset = Post.objects.published()  # ?????
     template_name = 'app/index.html'
-    # paginate_by = 2
     view_name = 'home'
-    config = category_config.POST_CATEGORIES
-    choice = category_config.POST_MAIN_CHOICES
-    choice_name = category_config.CATEGORY_NAME_PAIR
-    layout_index = 0  # layout_index = [picture-left-layout, picture-top-layout]
+    layout_style = 'left'
 
 
 class Portfolio(generic.TemplateView):
     template_name = 'app/portfolio_item.html'
-    layout_index = 1
+    layout_style = 'top'
     view_name = 'portfolio'
-    config = category_config.POST_CATEGORIES
-    choice = category_config.POST_MAIN_CHOICES
-    choice_name = category_config.CATEGORY_NAME_PAIR
+
+
+class PostCategorizedList(generic.ListView):
+    template_name = 'app/post_categorized_list.html'
+    layout_style = 'left'
+    view_name = 'home'
+
+    def get_queryset(self):
+        self.category = get_object_or_404(CategoryPost, parent=self.kwargs['parent'], child=self.kwargs['child'])
+        obj = Post.objects.published().filter(category=self.category)
+        print(obj)
+        return obj
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -100,6 +78,6 @@ def only_admin(request):
         request,
         'app/onlyadmin.html',
         {
-            'layout_index': 'auth',
+            'layout_style': 'auth',
         }
     )

@@ -22,9 +22,9 @@ urlpatterns = [  # 서버에 요청이 오면 누가 어떻게 처리할지 담�
     url(r'^contact$', app.views.Contact.as_view(), name='contact'),
     url(r'^about', app.views.About.as_view(), name='about'),
     url(r'^portfolio', app.views.Portfolio.as_view(), name='portfolio'),
-    url(r'^activity', app.views.ActivityList.as_view(), name='activity'),
-    url(r'^post/(?P<main>\S+)/(?P<sub>\S+)$', app.views.BlogIndex.as_view(), name='post'),
-    url(r'^post/(?P<slug>\S+)$', app.views.PostItem.as_view(), name="entry_detail"),
+    url(r'^activity', app.views.ActivityList.as_view(), name='activity_list'),
+    url(r'^post/(?P<parent>\S+)/(?P<child>\S+)$', app.views.PostCategorizedList.as_view(), name='post_categorized_list'),
+    url(r'^post/(?P<slug>\S+)$', app.views.PostItem.as_view(), name="post_item"),
     url(r'^login/$',
         django.contrib.auth.views.login,
         {

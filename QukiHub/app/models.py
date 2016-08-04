@@ -2,24 +2,26 @@
 Definition of models.
 MVC pattern
 Model: 데이터를 관리
-"""
 
+null=True Vs. blank=True
+CHAR and TEXT types are never saved as NULL by Django, so null=True is unnecessary.
+"""
 from django.db import models  # 모듈 import
 from ckeditor.fields import RichTextField
 from django.core.urlresolvers import reverse
 from . import category_config
 
 
-class Category(models.Model):
-    main = models.CharField(max_length=30, choices=category_config.POST_MAIN_CHOICES)
-    sub = models.CharField(max_length=30, unique=True)
+class CategoryPost(models.Model):
+    child = models.CharField(max_length=10, primary_key=True, choices=category_config.POST_CHILD_CHOICES)
+    parent = models.CharField(max_length=10, choices=category_config.POST_PARENT_CHOICES)
 
-    def __str__(self):  # __unicode__ on Python 2
-        return "%s - %s" % (self.main, self.sub)
+    def __str__(self):
+        return "%s(%s)" % (self.child, self.parent)
 
     class Meta:
-        verbose_name = "Post Category"
-        verbose_name_plural = "Post Categories"
+        verbose_name = "Category(Post)"
+        verbose_name_plural = "Categories(Post)"
 
 
 class EntryQuerySet(models.QuerySet):
@@ -28,13 +30,18 @@ class EntryQuerySet(models.QuerySet):
 
 
 class Post(models.Model):
+    number = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     overview = models.TextField(max_length=150)
-    number = models.AutoField(primary_key=True)
     content = RichTextField()
-    category = models.ForeignKey(Category, default=None, on_delete=models.PROTECT)
-    created = models.DateTimeField(auto_now_add=True, blank=True)
-    modified = models.DateTimeField(auto_now=True, blank=True)
+    category = models.ForeignKey(
+        CategoryPost,
+        default='etc',
+        null=True,
+        on_delete=models.SET_DEFAULT,
+    )
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=200, unique=True)
     publish = models.BooleanField(default=True)
     objects = EntryQuerySet.as_manager()  # ????
@@ -43,11 +50,9 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("entry_detail", kwargs={"slug": self.slug})
+        return reverse("post_item", kwargs={"slug": self.slug})
 
     class Meta:
-        verbose_name = "Blog Post"
-        verbose_name_plural = "Blog Posts"
+        verbose_name = "Post"
+        verbose_name_plural = "Posts"
         ordering = ["-created"]
-
-

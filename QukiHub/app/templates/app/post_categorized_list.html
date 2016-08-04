@@ -14,7 +14,7 @@
                     {% for object in object_list %}
                         <article class="post">
                             <div class="post-preview col-xs-10  no-gutter">
-                                <h2><a href="{% url "entry_detail" slug=object.slug %}">{{ object.title }}</a></h2>
+                                <h2><a href="{% url "post_item" slug=object.slug %}">{{ object.title }}</a></h2>
                                 <p>
                                     {{ object.overview }}
                                 </p>
