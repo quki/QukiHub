@@ -4,20 +4,20 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-2">
-                <img src="{% static 'app/img/profile-1.jpg' %}" class="user-icon " alt="user-image">
+                <img src="{% static 'test/512.png' %}" class="user-icon " alt="user-image">
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="category-list">
-                    <p>Published <span>14th May 2015</span></p>
-                    <p><a href="#">James Reddy</a> in <a href="#">Storytime</a></p>
+                    <p>Published <span>{{ object.created }}</span></p>
+                    <p><a href="{% url 'about' %}">Quki</a> in <a href="{% url 'home' %}">Storytime</a></p>
 
                     <div class="other-catergories">
                         <h3>Also found in</h3>
 
                         <ul>
-                            <li><a href="#">Stories</a>,</li>
-                            <li><a href="#">Life</a>,</li>
-                            <li><a href="#">Adventures</a></li>
+                            <li><a href="{% url 'home' %}">Stories</a>,</li>
+                            <li><a href="{% url 'home' %}">Life</a>,</li>
+                            <li><a href="{% url 'home' %}">Adventures</a></li>
                         </ul>
                     </div>
 
