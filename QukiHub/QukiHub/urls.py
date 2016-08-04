@@ -32,7 +32,7 @@ urlpatterns = [  # 서버에 요청이 오면 누가 어떻게 처리할지 담�
             'authentication_form': app.forms.BootstrapAuthenticationForm,
             'extra_context':
                 {
-                    'layout_index': 'auth',
+                    'layout_style': 'auth',
                     'year': datetime.now().year,
                 },
         },
