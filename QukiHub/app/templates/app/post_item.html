@@ -13,8 +13,9 @@
 
                 <p class="subtitle">{{ object.overview }}</p>
 
-                <p>{{ object.content | safe }}</p>
+                <div class="content">{{ object.content | safe }}</div>
 
+            {% include 'app/layout/disqus.html' %}
             </div><!-- main-content/col -->
         </div>
     </main>

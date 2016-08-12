@@ -421,3 +421,5 @@ secret.py
 # db
 **/db/
 **/migrations/
+README.md
+QukiHub_DB_IENotation.xml

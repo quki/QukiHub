@@ -2,9 +2,9 @@
 
 <div id="menu-target">
     <ul>
-        <li><i></i><a href="{% url 'home' %}">Home</a></li>
-        <li><i></i><a href="{% url 'about' %}">About</a></li>
-        <li><i></i><a href="{% url 'contact' %}">Contact</a></li>
+        <li class="single"><a href="{% url 'home' %}">Home</a></li>
+        <li class="single"><a href="{% url 'about' %}">About</a></li>
+        <li class="single"><a href="{% url 'contact' %}">Contact</a></li>
     </ul>
     <hr>
     <ul>
@@ -19,7 +19,7 @@
                 </ul>
             </li>
         {% endfor %}{% endcomment %}
-        <li class="submenu"></i><i></i><a>포스팅</a><b class="caret"></b>
+        <li class="submenu"><a>포스팅</a><b class="caret"></b>
             <ul class="submenu-list">
                 <li>
                     <a href="{% url 'post_categorized_list' parent='it' child='aws' %}">AWS</a>
@@ -32,8 +32,8 @@
                 </li>
             </ul>
         </li>
-        <li><i></i><a href="{% url 'activity_list' %}">Activity</a></li>
-        <li class="submenu"></i><i></i><a>Portfolio</a><b class="caret"></b>
+        <li class="single"><a href="{% url 'activity_list' %}">Activity</a></li>
+        <li class="submenu"><a>Portfolio</a><b class="caret"></b>
             <ul class="submenu-list">
                 <li>
                     <a href="{% url 'portfolio' %}">PreZentainer</a>
@@ -42,7 +42,7 @@
         </li>
 
         {% if user.is_authenticated and user.username == "quki" %}
-            <li><i></i><a href="{% url 'onlyadmin' %}">Admin</a></li>
+            <li class="single"><a href="{% url 'onlyadmin' %}">Admin</a></li>
         {% endif %}
         {% include 'app/loginpartial.html' %}
     </ul>

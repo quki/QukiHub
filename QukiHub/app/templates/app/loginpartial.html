@@ -1,7 +1,7 @@
 {% if user.is_authenticated %}
     <form id="logoutForm" action="/logout" method="post">
         {% csrf_token %}
-        <li><i></i><a
+        <li class="single"><a
                 href="javascript:document.getElementById('logoutForm').submit()">{{ user.username }} | Sign out</a></li>
     </form>
 
