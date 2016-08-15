@@ -22,46 +22,46 @@ from django.utils import timezone
 class Home(generic.ListView):
     queryset = Post.objects.published()  # ?????
     template_name = 'app/index.html'
-    layout_style = 'left'  # layout_style = {left: picture-left-layout, top: picture-top-layout}
+    layout_style = 'home_top'  # layout_style = {left: picture-left-layout, top: picture-top-layout}
     paginate_by = 5
     view_name = 'home'
 
 
 class Contact(generic.TemplateView):
     template_name = 'app/contact.html'
-    layout_style = 'left'
+    layout_style = 'none'
     view_name = 'contact'
 
 
 class About(generic.TemplateView):
     template_name = 'app/about.html'
-    layout_style = 'left'
+    layout_style = 'none'
     view_name = 'about'
 
 
 class PostItem(generic.DetailView):
     model = models.Post
     template_name = 'app/post_item.html'
-    layout_style = 'top'
+    layout_style = 'none'
     view_name = 'post_item'
 
 
 class ActivityList(generic.ListView):
     queryset = Post.objects.published()  # ?????
     template_name = 'app/index.html'
+    layout_style = 'home_top'
     view_name = 'home'
-    layout_style = 'left'
 
 
 class Portfolio(generic.TemplateView):
     template_name = 'app/portfolio_item.html'
-    layout_style = 'top'
+    layout_style = 'home_top'
     view_name = 'portfolio'
 
 
 class PostCategorizedList(generic.ListView):
     template_name = 'app/post_categorized_list.html'
-    layout_style = 'left'
+    layout_style = 'none'
     view_name = 'home'
 
     def get_queryset(self):
@@ -78,6 +78,6 @@ def only_admin(request):
         request,
         'app/onlyadmin.html',
         {
-            'layout_style': 'auth',
+            'layout_style': 'none',
         }
     )

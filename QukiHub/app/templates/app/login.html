@@ -1,10 +1,10 @@
 {% extends "app/layout/layout.html" %}
 
-{% block content %}
-    <main class="container left-container">
+{% block item %}
+    <section class="container">
         <div class="row">
-            <section id="loginForm">
-                <div class="col-md-7 col-sm-12 col-md-offset-5 main-content">
+            <div id="loginForm">
+                <div class="col-xs-12 main-content">
                     <form action="." method="post">
                         {% csrf_token %}
                         <h3>Sign in</h3>
@@ -39,14 +39,15 @@
 
 
                     </form>
+                {% include 'app/layout/footer_simple.html' %}
                 </div>
 
-            </section>
+            </div>
             <div class="col-md-4">
                 <section id="socialLoginForm"></section>
             </div>
         </div>
-    </main>
+    </section>
 {% endblock %}
 
 

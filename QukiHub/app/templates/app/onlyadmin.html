@@ -1,8 +1,8 @@
 {% extends "app/layout/layout.html" %}
-{% block content %}
-    <main class="container left-container">
+{% block item %}
+    <section class="container">
         <div class="row">
-            <section class="col-md-7 col-sm-12 col-md-offset-5 main-content">
+            <div class="ain-content">
 
                 <div class="sub-nav">
                     <a href="#" class="select-posts active">Posts</a>
@@ -97,7 +97,7 @@
                 </div>
                 {% include 'app/layout/footer_simple.html' %}
 
-            </section><!-- main content -->
+            </div><!-- main content -->
         </div>
-    </main>
+    </section>
 {% endblock %}

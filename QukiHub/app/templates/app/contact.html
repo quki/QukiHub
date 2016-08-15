@@ -1,24 +1,13 @@
 {% extends "app/layout/layout.html" %}
 
-{% block content %}
-    <main class="container left-container">
+{% block item %}
+    <section class="container">
         <div class="row">
-            <div class="col-md-7 col-sm-12 col-md-offset-5 main-content">
-
+            <div class="col-xs-12 main-content">
+                <br>
                 <h3>Contact to Quki</h3>
 
                 <form>
-                    {% comment %}<address>
-                One Microsoft Way<br/>
-                Redmond, WA 98052-6399<br/>
-                <abbr title="Phone">P:</abbr>
-                425.555.0100
-            </address>
-
-            <address>
-                <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br/>
-                <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-            </address>{% endcomment %}
 
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -50,7 +39,7 @@
             </div><!-- main content -->
 
         </div>
-    </main>
+    </section>
 {% endblock %}
 
 

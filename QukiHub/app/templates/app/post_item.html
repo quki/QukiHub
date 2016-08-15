@@ -1,24 +1,22 @@
 {% extends "app/layout/layout.html" %}
 {% load static from staticfiles %}
 {% block item %}
-    <main class="container">
-        <div class="row">
-            <div class="col-xs-12 single-content">
-                <p class="meta">
-                    <a class="" href="category.html">Quki</a> in <a class="" href="category.html">Storytime</a> <i
-                        class="link-spacer"></i> <i class="fa fa-bookmark"></i> {{ object.created }}
-                </p>
+    <div class="main-content">
+        <p class="meta">
+            <a class="" href="category.html">Quki</a> in <a class="" href="category.html">Storytime</a> <i
+                class="link-spacer"></i> <i class="fa fa-bookmark"></i> {{ object.created }}
+        </p>
 
-                <h1>{{ object.title }}</h1>
+        <h1>{{ object.title }}</h1>
 
-                <p class="subtitle">{{ object.overview }}</p>
+        <p class="subtitle">{{ object.overview }}</p>
 
-                <div class="content">{{ object.content | safe }}</div>
+        <div class="content">{{ object.content | safe }}</div>
 
-            {% include 'app/layout/disqus.html' %}
-            </div><!-- main-content/col -->
-        </div>
-    </main>
+        {% include 'app/layout/disqus.html' %}
+        {% comment %}{% include 'app/layout/recommendation.html' %}{% endcomment %}
+
+    </div><!-- main-content/col -->
 
     {% include 'app/layout/footer.html' %}
 {% endblock %}
