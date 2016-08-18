@@ -1,16 +1,17 @@
 {% extends "app/layout/layout.html" %}
 {% load static from staticfiles %}
 {% block item %}
-    <div class="main-content single-content">
+    <div class="main-content post-item">
         <p class="meta">
-            <a class="" href="category.html">Quki</a> in <a class="" href="category.html">Storytime</a> <i
-                class="link-spacer"></i> <i class="fa fa-bookmark"></i> {{ object.created }}
+            <a class="" href="category.html">{{ object.category.child }}</a> <i
+                class="link-spacer"></i> <i class="fa fa-clock-o"></i> {{ object.created }}
         </p>
 
         <h1>{{ object.title }}</h1>
 
         <p class="subtitle">{{ object.overview }}</p>
 
+        <!-- important! content는 항상 div tag로 -->
         <div class="content">{{ object.content | safe }}</div>
 
         {% include 'app/layout/disqus.html' %}

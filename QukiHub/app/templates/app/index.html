@@ -13,12 +13,12 @@
                 <div class="post-preview col-xs-12  no-gutter">
                     <h2><a href="{% url "post_item" slug=object.slug %}">{{ object.title }}</a></h2>
 
-                    <p>
+                    <p class="subtitle">
                         {{ object.overview }}
                     </p>
                     <p class="meta">
-                        <a href="author.html">Quki</a> in <a href="category.html">Storytime</a>
-                        <span><i class="fa fa-calendar-o"></i> {{ object.created }}</span>
+                        <a href="author.html">#{{ object.category.child }}</a>
+                        <span><i class="fa fa-clock-o"></i> {{ object.created }}</span>
                     </p>
                 </div>
             </article>
