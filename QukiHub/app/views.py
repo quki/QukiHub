@@ -27,7 +27,7 @@ class TagMixin(object):
         return context
 
 
-class PostIndex(TagMixin, generic.ListView):
+class PostIndex(generic.ListView):
     model = Post
     template_name = 'app/index.html'
     layout_style = 'home_top'  # layout_style = {left: picture-left-layout, top: picture-top-layout}
@@ -81,7 +81,7 @@ class PostCategorizedList(generic.ListView):
         return obj
 
 
-class TagIndexView(TagMixin, generic.ListView):
+class TagIndexView(generic.ListView):
     template_name = 'app/post_categorized_list.html'
     layout_style = 'none'
     view_name = 'home'

@@ -17,10 +17,10 @@
                             {{ object.overview }}
                         </p>
                         <p class="meta">
-                            {% for tag in tags %}
+                            {% for tag in object.tags.all %}
                                 <a href="{% url 'tagged' tag.slug %}">#{{ tag }}</a>
                             {% empty %}
-                                <a># No tag</a>
+                                <a></a>
                             {% endfor %}
                             <span><i class="fa fa-clock-o"></i> {{ object.created }}</span>
                         </p>
