@@ -42,7 +42,7 @@
             {% for tag in tags %}
                 <a href="{% url 'tagged' tag.slug %}">#{{ tag.name }}</a>
             {% empty %}
-                <a># No tag</a>
+                <a></a>
             {% endfor %}
         </div>
     </div>
