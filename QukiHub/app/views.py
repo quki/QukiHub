@@ -15,16 +15,26 @@ from django.contrib.auth.decorators import user_passes_test
 from django.views import generic
 from . import models, category_config
 from django.utils import timezone
+from taggit.models import Tag
 
 ...
 
 
-class Home(generic.ListView):
-    queryset = Post.objects.published()  # ?????
+class TagMixin(object):
+    def get_context_data(self):
+        context = super(TagMixin, self).get_context_data()
+        context['tags'] = Tag.objects.all()
+        return context
+
+
+class PostIndex(TagMixin, generic.ListView):
+    model = Post
     template_name = 'app/index.html'
     layout_style = 'home_top'  # layout_style = {left: picture-left-layout, top: picture-top-layout}
     paginate_by = 5
     view_name = 'home'
+    queryset = Post.objects.published()
+    context_object_name = 'posts'
 
 
 class Contact(generic.TemplateView):
@@ -69,6 +79,18 @@ class PostCategorizedList(generic.ListView):
         obj = Post.objects.published().filter(category=self.category)
         print(obj)
         return obj
+
+
+class TagIndexView(TagMixin, generic.ListView):
+    template_name = 'app/post_categorized_list.html'
+    layout_style = 'none'
+    view_name = 'home'
+    model = Post
+    paginate_by = 5
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs.get('slug'))
 
 
 @user_passes_test(lambda u: u.is_superuser)

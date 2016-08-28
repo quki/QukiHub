@@ -8,9 +8,9 @@ class PostAdmin(admin.ModelAdmin):
     fieldsets = [
         ('제목', {'fields': ['title']}),
         ('요약/개요', {'fields': ['overview'], 'classes': ['collapse']}),
-        ('내용', {'fields': ['content'], 'classes': ['collapse']}),
+        ('내용', {'fields': ['content']}),
         ('카테고리', {'fields': ['category']}),
-        (None, {'fields': ['slug', 'publish']}),
+        (None, {'fields': ['slug', 'publish', 'tags']}),
     ]
     prepopulated_fields = {"slug": ("title",)}
 

@@ -1,6 +1,5 @@
 <footer class="split-footer">
-    <a href="{% url 'about' %}">About</a>
-    <i class="link-spacer"></i>
-    <a href="{% url 'home' %}">QukiHub 2016</a>
-    <div>© 2016 All Rights Reserved. Quki</div>
+    {% comment %}<a href="{% url 'home' %}">QukiHub 2016</a>
+    <span>made by <a href="{% url 'about' %}">quki</a></span>{% endcomment %}
+    <div>Powered by <a style="color: #44B78B" target="_blank" href="https://www.djangoproject.com/">Django</a></div>
 </footer>

@@ -24,6 +24,8 @@ INSTALLED_APPS = ['app',
                   'django.contrib.staticfiles',
                   'ckeditor',
                   'storages',
+                  'taggit',
+
                   ]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -158,6 +160,7 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+AWS_STORAGE_BUCKET_NAME = 'qukihub'
 AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
 AWS_S3_SECURE_URLS = False
@@ -167,7 +170,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'app/static_local'),)
 
 if DEBUG:
     STATIC_URL = '/static_local/'
-
 else:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'

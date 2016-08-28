@@ -10,6 +10,7 @@ from django.db import models  # 모듈 import
 from ckeditor.fields import RichTextField
 from django.core.urlresolvers import reverse
 from . import category_config
+from taggit.managers import TaggableManager
 
 
 class CategoryPost(models.Model):
@@ -44,6 +45,7 @@ class Post(models.Model):
     modified = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=200, unique=True)
     publish = models.BooleanField(default=True)
+    tags = TaggableManager()
     objects = EntryQuerySet.as_manager()  # ????
 
     def __str__(self):

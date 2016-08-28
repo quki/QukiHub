@@ -1,7 +1,3 @@
-"""
-Definition of urls for QukiHub.
-사이트에 접속하면 Django는 가장먼저 urlpatterns를 보게됨.
-"""
 
 from datetime import datetime
 from django.conf.urls import url, include
@@ -18,13 +14,14 @@ urlpatterns = [  # 서버에 요청이 오면 누가 어떻게 처리할지 담�
 
     # url(주소, 접속시 누가 처리할 것인지)
     url(r'^admin/', admin.site.urls),
-    url(r'^$', app.views.Home.as_view(), name='home'),
+    url(r'^$', app.views.PostIndex.as_view(), name='home'),
     url(r'^contact$', app.views.Contact.as_view(), name='contact'),
     url(r'^about', app.views.About.as_view(), name='about'),
     url(r'^portfolio', app.views.Portfolio.as_view(), name='portfolio'),
     url(r'^activity', app.views.ActivityList.as_view(), name='activity_list'),
     url(r'^post/(?P<parent>\S+)/(?P<child>\S+)$', app.views.PostCategorizedList.as_view(), name='post_categorized_list'),
     url(r'^post/(?P<slug>\S+)$', app.views.PostItem.as_view(), name="post_item"),
+    url(r'^tag/(?P<slug>[-\w]+)/$', app.views.TagIndexView.as_view(), name="tagged"),
     url(r'^login/$',
         django.contrib.auth.views.login,
         {

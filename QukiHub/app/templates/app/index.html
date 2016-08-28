@@ -4,115 +4,47 @@
     <div class="section main-content">
 
         <div class="sub-nav">
-            <a href="#" class="select-posts active">Posts</a>
-            {% comment %}<a href="#" class="select-categories">Categories</a>{% endcomment %}
+            <a href="#content" class="select-posts active">Posts</a>
+            <a href="#content" class="select-posts">Tags</a>
         </div>
+        <div class="home-page-posts animated fadeIn">
+            {% for object in object_list %}
+                <article class="post">
+                    <div class="post-preview col-xs-12  no-gutter">
+                        <h2><a href="{% url "post_item" slug=object.slug %}">{{ object.title }}</a></h2>
 
-        {% for object in object_list %}
-            <article class="post">
-                <div class="post-preview col-xs-12  no-gutter">
-                    <h2><a href="{% url "post_item" slug=object.slug %}">{{ object.title }}</a></h2>
-
-                    <p class="subtitle">
-                        {{ object.overview }}
-                    </p>
-                    <p class="meta">
-                        <a href="author.html">#{{ object.category.child }}</a>
-                        <span><i class="fa fa-clock-o"></i> {{ object.created }}</span>
-                    </p>
-                </div>
-            </article>
-        {% endfor %}
-        {% if is_paginated %}
-            <ul class="pager">
-                <li {% if not page_obj.has_previous %}class="disabled"{% endif %}>
-                    <a {% if page_obj.has_previous %}href="?page={{ page_obj.previous_page_number }}{{ '#content' }}"{% endif %}>Prev</a>
-                </li>
-                <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
-                    <a {% if page_obj.has_next %}href="?page={{ page_obj.next_page_number }}{{ '#content' }}"{% endif %}>Next</a>
-                </li>
-            </ul>
-        {% endif %}
-
-        <div class="home-page-categories hide animated fadeIn ">
-            <div class="category row">
-                <section>
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Android</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-2.jpg' %}"
-                                                     alt="category-image"></a>
+                        <p class="subtitle">
+                            {{ object.overview }}
+                        </p>
+                        <p class="meta">
+                            {% for tag in tags %}
+                                <a href="{% url 'tagged' tag.slug %}">#{{ tag }}</a>
+                            {% empty %}
+                                <a># No tag</a>
+                            {% endfor %}
+                            <span><i class="fa fa-clock-o"></i> {{ object.created }}</span>
+                        </p>
                     </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Aruduino</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-4.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Python</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-6.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Algorithm</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-9.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Database</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-1.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Operating System</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-3.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Machine Learning</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-5.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Open Source</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-7.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Hackathon</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-8.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>AWS</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-10.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>English</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-11.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                    <div class="category-preview col-xs-6 col-sm-4 ">
-                        <h2>Reading</h2>
-                        <a href="category.html"><img src="{% static 'app/img/cover-12.jpg' %}"
-                                                     alt="category-image"></a>
-                    </div>
-
-                </section>
-            </div>
+                </article>
+            {% endfor %}
+            {% if is_paginated %}
+                <ul class="pager">
+                    <li {% if not page_obj.has_previous %}class="disabled"{% endif %}>
+                        <a {% if page_obj.has_previous %}href="?page={{ page_obj.previous_page_number }}{{ '#content' }}"{% endif %}>Prev</a>
+                    </li>
+                    <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
+                        <a {% if page_obj.has_next %}href="?page={{ page_obj.next_page_number }}{{ '#content' }}"{% endif %}>Next</a>
+                    </li>
+                </ul>
+            {% endif %}
         </div>
-        {% include 'app/layout/footer_simple.html' %}
-
+        <div class="home-page-posts hide animated fadeIn">
+            {% for tag in tags %}
+                <a href="{% url 'tagged' tag.slug %}">#{{ tag.name }}</a>
+            {% empty %}
+                <a># No tag</a>
+            {% endfor %}
+        </div>
     </div>
+{% include 'app/layout/footer_simple.html' %}
 {% endblock %}
