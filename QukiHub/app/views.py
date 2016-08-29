@@ -27,7 +27,7 @@ class TagMixin(object):
         return context
 
 
-class PostIndex(generic.ListView):
+class PostIndex(TagMixin, generic.ListView):
     model = Post
     template_name = 'app/index.html'
     layout_style = 'home_top'  # layout_style = {left: picture-left-layout, top: picture-top-layout}

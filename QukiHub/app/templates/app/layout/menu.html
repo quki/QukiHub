@@ -4,9 +4,9 @@
     <ul>
         <li class="single"><a href="{% url 'home' %}">Home</a></li>
         <li class="single"><a href="{% url 'about' %}">About</a></li>
+        <li class="single"><a href="{% url 'portfolio' %}">Portfolio</a></li>
         {% comment %}<li class="single"><a href="{% url 'contact' %}">Contact</a></li>{% endcomment %}
     </ul>
-    <hr>
     <ul>
         {% comment %}{% for mainparam, sublist in view.config.items %}
             <li class="submenu"></i><i></i><a>{{ view.choice_name  | get_item:mainparam }}</a><b class="caret"></b>
@@ -19,7 +19,7 @@
                 </ul>
             </li>
         {% endfor %}{% endcomment %}
-        <li class="submenu"><a>포스팅</a><b class="caret"></b>
+        {% comment %}<li class="submenu"><a>포스팅</a><b class="caret"></b>
             <ul class="submenu-list">
                 <li>
                     <a href="{% url 'post_categorized_list' parent='it' child='aws' %}">AWS</a>
@@ -39,7 +39,7 @@
                     <a href="{% url 'portfolio' %}">PreZentainer</a>
                 </li>
             </ul>
-        </li>
+        </li>{% endcomment %}
 
         {% if user.is_authenticated and user.username == "quki" %}
             <li class="single"><a href="{% url 'onlyadmin' %}">Admin</a></li>
