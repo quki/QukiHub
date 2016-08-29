@@ -2,14 +2,20 @@
 {% load static from staticfiles %}
 {% block item %}
     <div class="main-content post-item">
-        <p class="meta">
-            <a class="" href="category.html">{{ object.category.child }}</a> <i
-                class="link-spacer"></i> <i class="fa fa-clock-o"></i> {{ object.created }}
-        </p>
 
-        <h1>{{ object.title }}</h1>
-
-        <p class="subtitle">{{ object.overview }}</p>
+        <header class="hero-image" role="banner">
+            <h1>{{ object.title }}</h1>
+            <p class="subtitle">{{ object.overview }}</p>
+            <p class="meta">
+                {% for tag in object.tags.all %}
+                    <a href="{% url 'tagged' tag.slug %}">#{{ tag }}</a>
+                {% empty %}
+                    <a>#No tag</a>
+                {% endfor %}
+                <i class="link-spacer"></i>
+                <i class="fa fa-clock-o"></i> {{ object.created }}
+            </p>
+        </header>
 
         <!-- important! content는 항상 div tag로 -->
         <div class="content">{{ object.content | safe }}</div>
