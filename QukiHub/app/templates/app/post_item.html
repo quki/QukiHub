@@ -25,5 +25,45 @@
 
     </div><!-- main-content/col -->
 
-    {% include 'app/layout/footer.html' %}
+<footer class="single without-readmore">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-2">
+                <img src="{% static 'test/512.png' %}" class="user-icon " alt="user-image">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="category-list">
+                    <p><a href="{% url 'about' %}">quki</a></p>
+                    <p>Published <span>{{ object.created }}</span></p>
+                    <div class="other-catergories">
+                        <h3>Recommended</h3>
+
+                        <ul>
+                            <li><a href="{% url 'tagged' 'python'%}">Python</a>,</li>
+                            <li><a href="{% url 'tagged' 'naver-d2' %}">NAVER-D2</a>,</li>
+                            <li><a href="{% url 'tagged' 'pycon' %}">PyCon</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div><!-- end col -->
+            <div class="col-xs-12 col-sm-4">
+                <div class="social">
+                    <p>Share this article</p>
+                    <div class="social-links">
+                        <a class="social-icon" href="#" data-platform="twitter" data-message="Message about this post"
+                           data-url="http://www.qukihub.com/post/{{ object.slug }}"><i class="fa fa-twitter"></i></a>
+
+                        <a class="social-icon" href="#" data-platform="facebook" data-message="Message about this post"
+                           data-url="http://www.qukihub.com/post/{{ object.slug }}"><i class="fa fa-facebook-official"></i></a>
+
+                        <a class="social-icon" data-platform="mail"><i
+                                class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end row -->
+    </div>
+
+</footer>
 {% endblock %}
