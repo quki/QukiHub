@@ -41,7 +41,7 @@ class Post(models.Model):
         null=True,
         on_delete=models.SET_DEFAULT,
     )
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField()
     modified = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=200, unique=True)
     publish = models.BooleanField(default=True)

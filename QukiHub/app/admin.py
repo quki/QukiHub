@@ -10,7 +10,7 @@ class PostAdmin(admin.ModelAdmin):
         ('요약/개요', {'fields': ['overview'], 'classes': ['collapse']}),
         ('내용', {'fields': ['content']}),
         ('카테고리', {'fields': ['category']}),
-        (None, {'fields': ['slug', 'publish', 'tags']}),
+        (None, {'fields': ['slug', 'publish', 'tags', 'created']}),
     ]
     prepopulated_fields = {"slug": ("title",)}
 

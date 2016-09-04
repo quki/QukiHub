@@ -2,13 +2,9 @@ import os
 import posixpath
 from .secret import SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.conf.global_settings import DEFAULT_FILE_STORAGE
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 SECRET_KEY = SECRET_KEY
 DEBUG = False
