@@ -1,8 +1,4 @@
 """
-Definition of models.
-MVC pattern
-Model: 데이터를 관리
-
 null=True Vs. blank=True
 CHAR and TEXT types are never saved as NULL by Django, so null=True is unnecessary.
 """
