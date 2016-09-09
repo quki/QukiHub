@@ -42,6 +42,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     publish = models.BooleanField(default=True)
     tags = TaggableManager()
+    memo = models.CharField(max_length=150, blank=True)
     objects = EntryQuerySet.as_manager()  # ????
 
     def __str__(self):
