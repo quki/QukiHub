@@ -16,10 +16,27 @@
     {% comment %} if lt IE 9 <script src="/js/vendor/html5shiv.min.js"></script>{% endcomment %}
 
     <script src="{% static 'app/js/vendor/modernizr.custom.32229-2.8-respondjs-1-4-2.js' %}"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.10/webfont.js"></script>
+    <script type="text/javascript">
+        WebFont.load({
+
+            // For google fonts
+            google: {
+                families: ['Droid Sans', 'Droid Serif']
+            },
+            // For early access or custom font
+            custom: {
+                families: ['Nanum Gothic'],
+                urls: ['http://fonts.googleapis.com/earlyaccess/nanumgothic.css']
+            }
+
+        });
+    </script>
 </head>
 <body>
 {% include 'app/layout/menu.html' %}
-{% if view.layout_style == 'home_top'%}
+{% if view.layout_style == 'home_top' %}
     <div id="fullpage">
         {% include 'app/layout/top_bar_home.html' %}
         {% block content %} {% endblock %}
