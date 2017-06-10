@@ -21,6 +21,8 @@ INSTALLED_APPS = ['app',
                   'ckeditor',
                   'storages',
                   'taggit',
+                  'rest_framework',
+                  'rest_framework_swagger'
 
                   ]
 STATICFILES_FINDERS = (
