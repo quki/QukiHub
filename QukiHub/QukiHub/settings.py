@@ -20,9 +20,7 @@ INSTALLED_APPS = ['app',
                   'django.contrib.staticfiles',
                   'ckeditor',
                   'storages',
-                  'taggit',
-                  'rest_framework',
-                  'rest_framework_swagger'
+                  'taggit'
 
                   ]
 STATICFILES_FINDERS = (
