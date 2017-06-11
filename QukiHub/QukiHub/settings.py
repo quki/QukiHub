@@ -1,8 +1,6 @@
 import os
-import posixpath
-from .secret import SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
-from django.conf.global_settings import DEFAULT_FILE_STORAGE
+from .secret import SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,7 +20,8 @@ INSTALLED_APPS = ['app',
                   'storages',
                   'taggit',
                   'rest_framework',
-                  'rest_framework_swagger'
+                  'rest_framework_swagger',
+                  'ckeditor_uploader'
 
                   ]
 STATICFILES_FINDERS = (
@@ -93,6 +92,7 @@ USE_TZ = True
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
+        "removePlugins": "stylesheetparser",
         # 'skin': 'office2013',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
@@ -174,6 +174,10 @@ else:
     # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     AWS_S3_CUSTOM_DOMAIN = 'd2ylz7oz0qe74q.cloudfront.net'
     STATIC_URL = "http://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+# MEDIA_ROOT = (os.path.join(BASE_DIR, 'app/media'))
+# MEDIA_URL = 'media/'
+CKEDITOR_UPLOAD_PATH = "media/"
 
 '''
 1. STATICFILES_DIRS

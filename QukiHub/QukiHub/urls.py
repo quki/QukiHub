@@ -22,6 +22,7 @@ urlpatterns = [  # 서버에 요청이 오면 누가 어떻게 처리할지 담�
     url(r'^post/(?P<parent>\S+)/(?P<child>\S+)$', app.views.PostCategorizedList.as_view(), name='post_categorized_list'),
     url(r'^post/(?P<slug>\S+)$', app.views.PostItem.as_view(), name="post_item"),
     url(r'^tag/(?P<slug>[-\w]+)/$', app.views.TagIndexView.as_view(), name="tagged"),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^login/$',
         django.contrib.auth.views.login,
         {
@@ -41,7 +42,4 @@ urlpatterns = [  # 서버에 요청이 오면 누가 어떻게 처리할지 담�
         },
         name='logout'),
     url(r'^onlyadmin$', app.views.only_admin, name='onlyadmin'),
-    # url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
 ]

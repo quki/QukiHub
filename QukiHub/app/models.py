@@ -7,6 +7,7 @@ from ckeditor.fields import RichTextField
 from django.core.urlresolvers import reverse
 from . import category_config
 from taggit.managers import TaggableManager
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class CategoryPost(models.Model):
@@ -30,7 +31,7 @@ class Post(models.Model):
     number = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     overview = models.TextField(max_length=150)
-    content = RichTextField()
+    content = RichTextUploadingField()
     category = models.ForeignKey(
         CategoryPost,
         default='etc',
